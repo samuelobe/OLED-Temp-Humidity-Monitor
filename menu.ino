@@ -24,6 +24,9 @@ void setup()
       ; // Don't proceed, loop forever
   }
 
+  startupScreen();
+  delay(7000);
+
   updateMenu();
   index = 2;
   delay(3000);
@@ -44,6 +47,12 @@ void loop()
 
 void startupScreen()
 {
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 1);
+  display.println(F("STARTUP SCREEN!!\n"));
+  display.display();
 }
 
 void updateMenu()
