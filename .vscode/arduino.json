@@ -1,5 +1,5 @@
 {
-    "sketch": "SAAF.ino",
+    "sketch": "menu.ino",
     "port": "/dev/ttyACM1",
     "board": "arduino:avr:uno",
     "programmer": "AVR ISP"

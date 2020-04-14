@@ -64,6 +64,8 @@ void setup()
       ; // Don't proceed, loop forever
   }
 
+  menu();
+
   // Show initial display buffer contents on the screen --
   // the library initializes this with an Adafruit splash screen.
   //display.display();
@@ -107,7 +109,7 @@ void setup()
   */
   //testdrawstyles(); // Draw 'stylized' characters
 
-  testscrolltext(); // Draw scrolling text
+  //testscrolltext(); // Draw scrolling text
 
   //testdrawbitmap(); // Draw a small bitmap image
 
@@ -122,6 +124,85 @@ void setup()
 
 void loop()
 {
+}
+
+void menu()
+{
+  display.clearDisplay();
+  display.setTextSize(2); // Draw 2X-scale text
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.println(F("> LINE 1"));
+  display.println(F("  LINE 2"));
+  display.display(); 
+  delay(3000);
+
+  display.clearDisplay();
+  display.setTextSize(2); 
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.println(F("  LINE 1"));
+  display.println(F("> LINE 2"));
+  delay(3000);
+  display.display();
+
+  display.clearDisplay();
+  display.setTextSize(2); 
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.println(F("> LINE 2"));
+  display.println(F("  LINE 3"));
+  delay(3000);
+  display.display();
+
+  display.clearDisplay();
+  display.setTextSize(2); 
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.println(F("  LINE 2"));
+  display.println(F("> LINE 3"));
+  delay(3000);
+  display.display();
+
+  /*
+  display.display(); 
+  display.println(F("  LINE 1"));
+  display.println(F("> LINE 2"));
+  delay(3000);
+ 
+  display.display(); 
+  display.println(F("> LINE 2"));
+  display.println(F("  LINE 3"));
+
+
+
+
+  display.clearDisplay();
+
+  display.setTextSize(1); // Draw 2X-scale text
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 1);
+  display.println(F("scroll"));
+  display.display(); // Show initial text
+  delay(100);
+  /*
+  // Scroll in various directions, pausing in-between:
+  display.startscrollright(0x00, 0x0F);
+  delay(2000);
+  display.stopscroll();
+  delay(1000);
+  display.startscrollleft(0x00, 0x0F);
+  delay(2000);
+  display.stopscroll();
+  delay(1000);
+  display.startscrolldiagright(0x00, 0x07);
+  delay(2000);
+  display.startscrolldiagleft(0x00, 0x07);
+  delay(2000);
+  display.stopscroll();
+  delay(1000);
+  */
+  
 }
 
 void testdrawline()
