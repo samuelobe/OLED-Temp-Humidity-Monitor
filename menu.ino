@@ -52,6 +52,8 @@ static const unsigned char PROGMEM logo_bmp[] =
      B01110000, B01110000,
      B00000000, B00110000};
 
+int index = 1;
+
 void setup()
 {
   Serial.begin(9600);
@@ -64,145 +66,71 @@ void setup()
       ; // Don't proceed, loop forever
   }
 
-  menu();
-
-  // Show initial display buffer contents on the screen --
-  // the library initializes this with an Adafruit splash screen.
-  //display.display();
-  //delay(2000); // Pause for 2 seconds
-
-  // Clear the buffer
-  //display.clearDisplay();
-
-  // Draw a single pixel in white
-  //display.drawPixel(10, 10, SSD1306_WHITE);
-
-  // Show the display buffer on the screen. You MUST call display() after
-  // drawing commands to make them visible on screen!
-  //display.display();
-  //delay(2000);
-  // display.display() is NOT necessary after every single drawing command,
-  // unless that's what you want...rather, you can batch up a bunch of
-  // drawing operations and then update the screen all at once by calling
-  // display.display(). These examples demonstrate both approaches...
-
-  /*
-  testdrawline(); // Draw many lines
-
-  testdrawrect(); // Draw rectangles (outlines)
-
-  testfillrect(); // Draw rectangles (filled)
-
-  testdrawcircle(); // Draw circles (outlines)
-
-  testfillcircle(); // Draw circles (filled)
-
-  testdrawroundrect(); // Draw rounded rectangles (outlines)
-
-  testfillroundrect(); // Draw rounded rectangles (filled)
-
-  testdrawtriangle(); // Draw triangles (outlines)
-
-  testfilltriangle(); // Draw triangles (filled)
-
-  testdrawchar(); // Draw characters of the default font
-  */
-  //testdrawstyles(); // Draw 'stylized' characters
-
-  //testscrolltext(); // Draw scrolling text
-
-  //testdrawbitmap(); // Draw a small bitmap image
-
-  // Invert and restore display, pausing in-between
-  //display.invertDisplay(true);
-  //delay(1000);
-  //display.invertDisplay(false);
-  //delay(1000);
-
-  //testanimate(logo_bmp, LOGO_WIDTH, LOGO_HEIGHT); // Animate bitmaps
+  updateMenu();
+  index = 2;
+  delay(3000);
+  updateMenu();
+  index = 3;
+  delay(3000);
+  updateMenu();
+  index = 4;
+  delay(3000);
+  updateMenu();
+  index = 5;
 }
 
 void loop()
 {
+  //menu();
 }
 
-void menu()
+void startupScreen()
 {
-  display.clearDisplay();
-  display.setTextSize(2); // Draw 2X-scale text
-  display.setTextColor(SSD1306_WHITE);
-  display.setCursor(0, 0);
-  display.println(F("> LINE 1"));
-  display.println(F("  LINE 2"));
-  display.display(); 
-  delay(3000);
+}
 
-  display.clearDisplay();
-  display.setTextSize(2); 
-  display.setTextColor(SSD1306_WHITE);
-  display.setCursor(0, 0);
-  display.println(F("  LINE 1"));
-  display.println(F("> LINE 2"));
-  delay(3000);
-  display.display();
-
-  display.clearDisplay();
-  display.setTextSize(2); 
-  display.setTextColor(SSD1306_WHITE);
-  display.setCursor(0, 0);
-  display.println(F("> LINE 2"));
-  display.println(F("  LINE 3"));
-  delay(3000);
-  display.display();
-
-  display.clearDisplay();
-  display.setTextSize(2); 
-  display.setTextColor(SSD1306_WHITE);
-  display.setCursor(0, 0);
-  display.println(F("  LINE 2"));
-  display.println(F("> LINE 3"));
-  delay(3000);
-  display.display();
-
-  /*
-  display.display(); 
-  display.println(F("  LINE 1"));
-  display.println(F("> LINE 2"));
-  delay(3000);
- 
-  display.display(); 
-  display.println(F("> LINE 2"));
-  display.println(F("  LINE 3"));
-
-
-
-
-  display.clearDisplay();
-
-  display.setTextSize(1); // Draw 2X-scale text
-  display.setTextColor(SSD1306_WHITE);
-  display.setCursor(0, 1);
-  display.println(F("scroll"));
-  display.display(); // Show initial text
-  delay(100);
-  /*
-  // Scroll in various directions, pausing in-between:
-  display.startscrollright(0x00, 0x0F);
-  delay(2000);
-  display.stopscroll();
-  delay(1000);
-  display.startscrollleft(0x00, 0x0F);
-  delay(2000);
-  display.stopscroll();
-  delay(1000);
-  display.startscrolldiagright(0x00, 0x07);
-  delay(2000);
-  display.startscrolldiagleft(0x00, 0x07);
-  delay(2000);
-  display.stopscroll();
-  delay(1000);
-  */
-  
+void updateMenu()
+{
+  switch (index)
+  {
+  case 0:
+    index = 1;
+    break;
+  case 1:
+    display.clearDisplay();
+    display.setTextSize(2); 
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0, 0);
+    display.println(F("> LINE 1"));
+    display.println(F("  LINE 2"));
+    display.display();
+    break;
+  case 2:
+    display.clearDisplay();
+    display.setTextSize(2);
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0, 0);
+    display.println(F("  LINE 1"));
+    display.println(F("> LINE 2"));
+    display.display();
+    break;
+  case 3:
+    display.clearDisplay();
+    display.setTextSize(2);
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0, 0);
+    display.println(F("> LINE 2"));
+    display.println(F("  LINE 3"));
+    display.display();
+    break;
+  case 4:
+    display.clearDisplay();
+    display.setTextSize(2);
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0, 0);
+    display.println(F("  LINE 2"));
+    display.println(F("> LINE 3"));
+    display.display();
+  }
 }
 
 void testdrawline()
@@ -506,7 +434,7 @@ void testanimate(const uint8_t *bitmap, uint8_t w, uint8_t h)
     Serial.println(icons[f][DELTAY], DEC);
   }
 
-  while(true)
+  while (true)
   {                         // Loop forever...
     display.clearDisplay(); // Clear the display buffer
 
