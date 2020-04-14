@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "defines": [
+                "ARDUINO=10800",
+                "USBCON"
+            ],
+            "includePath": [
+                "${workspaceRoot}",
+                "/home/sam/Dev/arduino-1.8.12/hardware/arduino/avr/**",
+                "/home/sam/Dev/arduino-1.8.12/tools/**",
+                "/home/sam/Dev/arduino-1.8.12/hardware/tools/**",
+                "/home/sam/Dev/arduino-1.8.12/libraries/**",
+                "/home/sam/Arduino/libraries/**"
+            ],
+            "forcedInclude": [
+                "/home/sam/Dev/arduino-1.8.12/hardware/arduino/avr/cores/arduino/Arduino.h"
+            ],
+            "intelliSenseMode": "clang-x64",
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
