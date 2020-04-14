@@ -42,7 +42,7 @@ void setup()
 
 void loop()
 {
-  //menu();
+  
 }
 
 void startupScreen()
